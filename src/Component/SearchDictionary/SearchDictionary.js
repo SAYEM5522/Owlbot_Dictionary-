@@ -73,15 +73,15 @@ const SearchDictionary = () => {
                 <p className=''>{error.response?.data?.message||error?.message}</p>
                 </div>
               ):(
-                <div>
+                <div className='overflow-y-auto no-scrollbar'>
                 {wordData && wordData.length > 0 ?(
                   <div>
                     {wordData.map((wordItem, index) => (
                       <div  key={index}>
                         {wordItem.meanings && (
-                          <div className='flex  flex-wrap flex-row' >
+                          <div className='flex flex-1 flex-wrap flex-row' >
                             {wordItem.meanings.map((meaning, meaningIndex) => (
-                              <div className='bg-white shadow w-[30%] rounded-md relative  items-start m-2 px-2 py-6' key={meaningIndex}>
+                              <div className='bg-white shadow w-[250px] rounded-md relative  items-start m-2 px-2 py-6' key={meaningIndex}>
                                 <h4 className='text-left'>Type:{meaning.partOfSpeech}</h4>
                                 {/* show the first 2 defination */}
                                 {meaning.definitions.slice(0, 2).map((definition, defIndex) => (
@@ -106,7 +106,7 @@ const SearchDictionary = () => {
                 )
                 
                 :(
-                  <p className='text-center'>No search has been performed</p>
+                  <p className='text-center'>No search item found. Please search</p>
                 )}
                 </div>
               )

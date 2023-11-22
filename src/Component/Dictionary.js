@@ -13,7 +13,7 @@ const Dictionary = () => {
           data.map((item,index)=>{
             return(
              <div key={index} onClick={()=>ItemSelect(index)} className={`flex ${index===acttiveIndex?"bg-black text-white ":""} p-2 rounded-md cursor-pointer items-center`}>
-              <p className=' px-2 ' >{item.name}</p>
+              <p className=' px-8 font-medium text-md' >{item.name}</p>
              </div>
             )
           })

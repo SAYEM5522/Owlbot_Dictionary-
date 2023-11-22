@@ -19,46 +19,54 @@ const ViewFavorites = () => {
   };
 
   const filteredFavorites = favorites.filter(
-    (favorite) => !filteredType || favorite.type === filteredType
+    (favorite) => !filteredType || favorite.partOfSpeech === filteredType
   );
+  console.log(filteredFavorites)
 
   return (
-    <div>
-      <h2>Favorite Words</h2>
-
-      {/* Filter by type dropdown */}
-      <label htmlFor="typeFilter">Filter by Type: </label>
+    <div className='flex flex-col items-start'>
+      <div className='px-3'>
       <select id="typeFilter" value={filteredType} onChange={handleFilterChange}>
         <option value="">All</option>
         <option value="noun">Noun</option>
         <option value="verb">Verb</option>
         <option value="adjective">Adjective</option>
+        <option value="adverb">Adverb</option>
+        <option value="interjection">Interjection</option>
+
+
         {/* Add more options for other types as needed */}
       </select>
-
-      {/* Display favorites or "No items found" message */}
+      </div>
+      <div>
       {filteredFavorites.length > 0 ? (
-        <ul>
+        <ul className='flex flex-row flex-wrap'>
           {filteredFavorites.map((favorite, index) => (
-            <li key={index}>
-              <h3>{favorite.word}</h3>
+            <li className='w-[250px] bg-white relative shadow rounded-md px-3 py-6 m-2' key={index}>
+              <h3 className='text-left capitalize'>Word: {favorite.word}</h3>
               {
                 favorite?.definition?.map((item,i)=>(
                   <div key={i}>
-                    <p>Definition: {item.definition}</p>
-                    <p>Example: {item.example}</p>
+                    <p className='text-left'>Definition: {item.definition}</p>
+                    {
+                      item.example&&
+                    <p className='text-left'>Example: {item.example}</p>
+
+                    }
                   </div>
                 ))
               }
-              <button onClick={() => handleRemoveFavorite(favorite?.word,favorite?.partOfSpeech)}>
-                Remove from Favorites
+              <button className='absolute top-1 right-1 bg-black text-white p-1 rounded-md hover:scale-[1.01]' onClick={() => handleRemoveFavorite(favorite?.word,favorite?.partOfSpeech)}>
+                Remove
               </button>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No items found.</p>
+        <p className='p-5'>No favorite items found.</p>
       )}
+      </div>
+      
     </div>
   );
 };
