@@ -12,6 +12,7 @@ const useData = () => {
     try {
       const response = await axios.get(`${BASE_URL}${word}`);
       setWordData(response.data);
+      setLoading(false)
     } catch (error) {
       console.error('Error fetching word data:', error);
       setError(error);

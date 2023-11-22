@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import useViewFavorites from './useViewFavorites';
 
 const ViewFavorites = () => {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, updateFavorites] = useViewFavorites();
   const [filteredType, setFilteredType] = useState(''); // Default: Show all types
 
-  useEffect(() => {
-    // Fetch favorites from local storage
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(storedFavorites);
-  }, []);
-
-  const handleRemoveFavorite = (word) => {
+  const handleRemoveFavorite = (word,partOfSpeech) => {
+    console.log(partOfSpeech)
     // Remove the word from favorites
-    const updatedFavorites = favorites.filter((favorite) => favorite.word !== word);
-    setFavorites(updatedFavorites);
-
-    // Update local storage
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    const updatedFavorites = favorites.filter(
+      (favorite) => !(favorite.word === word && favorite.partOfSpeech === partOfSpeech)
+    );
+    updateFavorites(updatedFavorites);
   };
 
   const handleFilterChange = (event) => {
@@ -26,7 +21,6 @@ const ViewFavorites = () => {
   const filteredFavorites = favorites.filter(
     (favorite) => !filteredType || favorite.type === filteredType
   );
-  console.log(favorites)
 
   return (
     <div>
@@ -56,7 +50,7 @@ const ViewFavorites = () => {
                   </div>
                 ))
               }
-              <button onClick={() => handleRemoveFavorite(favorite.word)}>
+              <button onClick={() => handleRemoveFavorite(favorite?.word,favorite?.partOfSpeech)}>
                 Remove from Favorites
               </button>
             </li>
