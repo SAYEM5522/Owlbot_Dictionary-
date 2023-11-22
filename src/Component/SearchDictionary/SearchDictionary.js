@@ -9,12 +9,30 @@ const SearchDictionary = () => {
       fetchWordData(searchTerm);
     }
   };
-   
+  //  example start with capitalize and end with period
+  const capitalizeAndPeriod = (example) => {
+    const trimmedExample = example.trim();
+  const lastCharacter = trimmedExample.charAt(trimmedExample.length - 1);
+  if (lastCharacter === '.') {
+    // Example already ends with a period
+    return trimmedExample;
+  }
+  const words = trimmedExample.split(' ');
+  if (words.length === 0) return trimmedExample;
+    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+    return words.join(' ') + '.';
+  };
    const handleFavorite = (item) => {
-    // if (wordData && wordData.length > 0) {
       const newFavorite = {
         partOfSpeech: item?.partOfSpeech,
-        definition:item.definitions.slice(0,2),
+        definition:item.definitions.slice(0,2).map((item,index)=>{
+          return {
+            definition:item.definition,
+            example:capitalizeAndPeriod(item?.example)
+          }
+        }
+          
+        ),
         word:wordData[0]?.word
         // Add other properties you want to store
       };
@@ -30,9 +48,7 @@ const SearchDictionary = () => {
         // Store the updated array back into local storage
         localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
       }
-    // }
   };
-  
   return (
     <div>
       <div>
@@ -61,11 +77,12 @@ const SearchDictionary = () => {
                       <p>Example: {definition.example}</p>
                     </div>
                   ))}
+              <button onClick={() => handleFavorite(meaning)}>Favorite</button>
+
                     </div>
                   ))}
                 </div>
               )}
-              <button onClick={() => handleFavorite(wordItem?.meanings[0])}>Favorite</button>
             </div>
           ))}
         </div>
