@@ -1,12 +1,18 @@
 import React from 'react'
+import SearchDictionary from './SearchDictionary/SearchDictionary'
+import ViewFavorites from './ViewFavorites/ViewFavorites'
 const Layout = ({index}) => {
   return(
     <div>
       {
         (index===0)?(
-          <div>9</div>
+          <div>
+            <SearchDictionary/>
+          </div>
         ):(
-        <div>0</div>
+        <div>
+          <ViewFavorites/>
+        </div>
         )
       }
     </div>
