@@ -7,7 +7,7 @@ const Dictionary = () => {
     setACtiveIndex(index)
   }
   return (
-    <div className='w-[60%] h-full bg-[whitesmoke] flex flex-col items-start'>
+    <div className='w-[60%] h-full  flex flex-col items-start'>
       <div className='flex border w-fit flex-row  mt-2 mx-auto rounded-md'>
       {
           data.map((item,index)=>{

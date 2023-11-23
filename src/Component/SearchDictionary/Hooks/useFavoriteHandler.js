@@ -22,7 +22,6 @@ const useFavoriteHandler = () => {
         };
       }),
       word: wordData[0]?.word,
-      // Add other properties you want to store
     };
 
     // Fetch existing favorites from local storage

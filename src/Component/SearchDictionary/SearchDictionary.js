@@ -10,8 +10,10 @@ const SearchDictionary = () => {
   const { wordData, loading, error, fetchWordData } = useData();
   const { handleFavoriteItem } = useFavoriteHandler();
   const handleSearch = () => {
+    
     if (searchTerm) {
       fetchWordData(searchTerm);
+      console.log(searchTerm)
     }
   };
   const handleSearchTerm=(e)=>{
@@ -40,6 +42,7 @@ const SearchDictionary = () => {
           )
           :
           <div>
+            
             {error?(
                 <ErrorMessage error={error} />
               ):(

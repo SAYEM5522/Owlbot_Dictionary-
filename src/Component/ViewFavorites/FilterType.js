@@ -3,7 +3,7 @@ import React from 'react'
 const FilterType = ({ filteredType, handleFilterChange }) => {
   return (
     <div className='px-3'>
-    <select id="typeFilter" value={filteredType} onChange={handleFilterChange}>
+    <select className='border w-full' id="typeFilter" value={filteredType} onChange={handleFilterChange}>
       <option value="">All</option>
       <option value="noun">Noun</option>
       <option value="verb">Verb</option>
