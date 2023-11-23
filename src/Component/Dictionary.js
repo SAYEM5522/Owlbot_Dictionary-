@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import Layout from './Layout'
 import { data } from './Data'
 const Dictionary = () => {
   const [acttiveIndex,setACtiveIndex]=useState(0)
-  const ItemSelect=useCallback((index)=>{
+  const ItemSelect=(index)=>{
     setACtiveIndex(index)
-  },[acttiveIndex])
+  }
   return (
-    <div className='w-[60%] h-screen bg-[whitesmoke] flex flex-col items-start'>
+    <div className='w-[60%] h-full bg-[whitesmoke] flex flex-col items-start'>
       <div className='flex border w-fit flex-row  mt-2 mx-auto rounded-md'>
       {
           data.map((item,index)=>{

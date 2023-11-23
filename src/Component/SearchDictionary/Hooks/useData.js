@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
