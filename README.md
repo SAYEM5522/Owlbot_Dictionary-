@@ -1,15 +1,25 @@
 
 ## Live Link:
+https://owlbot-dictionary.vercel.app/
 
-## Task Requirements:
-We’d like you to create a small application that allows the user to search a dictionary for their favorite words and store them in the browser storage so that they can be retrieved and viewed.
+## Description:
+The project is a small dictionary application implemented in React. It allows users to search for words, view the definitions, examples, and images associated with the searched words. Users can mark words as favorites, and their selections are stored in the browser's local storage. Additionally, users can view a list of their favorite words, filter them by type (noun, verb, etc.), and remove words from the favorites list. The application emphasizes functionality over UI design, demonstrating the use of React components and best practices for frontend development
+## Getting Started
 
-There are 3 major steps to this process:
+Follow these steps to set up and run the project locally:
 
-⦁	To search for words, you should use the Owlbot Dictionary API (⦁	https://owlbot.info). The user should be able to type a word that they’d like to search in the dictionary and see a list of results which includes the definition, example, and image.
+### Clone the Repository
 
-⦁	Upon viewing the results, the user should be able to “favorite” a word and the corresponding data should be saved to the browser storage. 
+```bash
+git clone https://github.com/SAYEM5522/Owlbot_Dictionary-.git
+```
+### Install Dependencies
+```bash
+npm install
+```
+### Run the Application
+```bash
+npm start
 
-⦁	At any point, the user should be able to see a view of their favorite words along with the definition, example, and image. In this view, the user should be able to remove a word from their favorites list and also filter their favorites based on the type of word (noun, adverb, adjective, etc)
+```
 
-We have provided two wireframes below to help illustrate (you are NOT required to follow this design, it is provided primarily to clarify the requirements):
